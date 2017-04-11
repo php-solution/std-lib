@@ -9,7 +9,7 @@ abstract class AbstractGenericCollection extends \ArrayIterator
     /**
      * @return string
      */
-    abstract protected function getType(): string;
+    abstract public function getType(): string;
 
     /**
      * @param mixed $value
@@ -21,7 +21,7 @@ abstract class AbstractGenericCollection extends \ArrayIterator
     {
         $type = $this->getType();
         if (!$value instanceof $type) {
-            throw new \InvalidArgumentException(static::class . ' expects values of "' . $type . '" type');
+            throw new \UnexpectedValueException(static::class . ' expects values of "' . $type . '" type');
         }
 
         return $value;
