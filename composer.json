@@ -18,10 +18,10 @@
     "suggest": {
     },
     "autoload":     {
-        "psr-4": {
-            "PhpSolution\\StdLib\\": "src/",
-            "Tests\\": "tests/"
-        }
+        "psr-4": { "PhpSolution\\StdLib\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\": "tests/" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
