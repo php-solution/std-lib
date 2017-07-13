@@ -26,7 +26,7 @@ trait EnabledTrait
      *
      * @return $this
      */
-    public function setActive(bool $enabled = EnabledInterface::ENABLED)
+    public function setEnabled(bool $enabled = EnabledInterface::ENABLED)
     {
         $this->enabled = $enabled;
 
