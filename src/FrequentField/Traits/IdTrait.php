@@ -1,5 +1,5 @@
 <?php
-namespace PhpSolution\FrequentField\Traits;
+namespace PhpSolution\StdLib\FrequentField\Traits;
 
 /**
  * IdTrait

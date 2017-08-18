@@ -1,5 +1,5 @@
 <?php
-namespace PhpSolution\FrequentField\Traits;
+namespace PhpSolution\StdLib\FrequentField\Traits;
 
 /**
  * EmailTrait
@@ -7,24 +7,24 @@ namespace PhpSolution\FrequentField\Traits;
 trait EmailTrait
 {
     /**
-     * @var string
+     * @var null|string
      */
-    private $email;
+    protected $email;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getEmail(): string
+    public function getEmail():? string
     {
         return $this->email;
     }
 
     /**
-     * @param string $email
+     * @param null|string $email
      *
      * @return $this
      */
-    public function setEmail(string $email)
+    public function setEmail(string $email = null)
     {
         $this->email = $email;
 

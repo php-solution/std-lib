@@ -1,5 +1,5 @@
 <?php
-namespace PhpSolution\FrequentField\Interfaces;
+namespace PhpSolution\StdLib\FrequentField\Interfaces;
 
 /**
  * EmailInterface
@@ -7,7 +7,7 @@ namespace PhpSolution\FrequentField\Interfaces;
 interface EmailInterface
 {
     /**
-     * @return string
+     * @return null|string
      */
-    public function getEmail(): string;
+    public function getEmail():? string;
 }

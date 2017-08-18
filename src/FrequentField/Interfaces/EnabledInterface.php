@@ -1,5 +1,5 @@
 <?php
-namespace PhpSolution\FrequentField\Interfaces;
+namespace PhpSolution\StdLib\FrequentField\Interfaces;
 
 /**
  * EnabledInterface
@@ -13,4 +13,11 @@ interface EnabledInterface
      * @return bool
      */
     public function isEnabled(): bool;
+
+    /**
+     * @param bool $enabled
+     *
+     * @return self
+     */
+    public function setEnabled(bool $enabled);
 }

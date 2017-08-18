@@ -1,5 +1,5 @@
 <?php
-namespace PhpSolution\FrequentField\Interfaces;
+namespace PhpSolution\StdLib\FrequentField\Interfaces;
 
 /**
  * SortableInterface

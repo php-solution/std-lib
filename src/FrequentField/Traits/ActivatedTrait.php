@@ -1,7 +1,7 @@
 <?php
-namespace PhpSolution\FrequentField\Traits;
+namespace PhpSolution\StdLib\FrequentField\Traits;
 
-use PhpSolution\FrequentField\Interfaces\ActivatedInterface;
+use PhpSolution\StdLib\FrequentField\Interfaces\ActivatedInterface;
 
 /**
  * ActivatedTrait
