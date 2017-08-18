@@ -32,7 +32,7 @@ class Helper
      *
      * @return string
      */
-    public static function underscoreToCamelCase($string, $capitalizeFirstChar = false): string
+    public static function underscoreToCamelCase(string $string, bool $capitalizeFirstChar = false): string
     {
         $str = str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
         if (!$capitalizeFirstChar) {
