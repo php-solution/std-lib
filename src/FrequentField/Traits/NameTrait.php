@@ -7,20 +7,20 @@ namespace PhpSolution\StdLib\FrequentField\Traits;
 trait NameTrait
 {
     /**
-     * @var string
+     * @var null|string
      */
     protected $name;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getName(): string
+    public function getName():? string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param null|string $name
      *
      * @return $this
      */
