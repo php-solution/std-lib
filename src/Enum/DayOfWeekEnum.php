@@ -22,4 +22,20 @@ class DayOfWeekEnum extends AbstractEnum
     {
         return [self::MONDAY, self::TUESDAY, self::WEDNESDAY, self::THURSDAY, self::FRIDAY, self::SATURDAY, self::SUNDAY];
     }
+
+    /**
+     * @return string[]
+     */
+    public static function getDescriptions(): array
+    {
+        return [
+            self::MONDAY => 'Monday',
+            self::TUESDAY => 'Tuesday',
+            self::WEDNESDAY => 'Wednesday',
+            self::THURSDAY => 'Thursday',
+            self::FRIDAY => 'Friday',
+            self::SATURDAY => 'Saturday',
+            self::SUNDAY => 'Sunday',
+        ];
+    }
 }

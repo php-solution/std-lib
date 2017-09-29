@@ -54,6 +54,19 @@ abstract class AbstractEnum
     /**
      * @return string
      */
+    public static function getDescription(): string
+    {
+        $descriptions = [];
+        foreach (static::getDescriptions() as $key => $value) {
+            $descriptions[] = $key . ': ' . $value;
+        }
+
+        return 'Allowed values: ' . implode(', ', $descriptions);
+    }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->value;
