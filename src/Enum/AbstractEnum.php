@@ -52,6 +52,16 @@ abstract class AbstractEnum
     }
 
     /**
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    public function is($value): bool
+    {
+        return $value === $this->value;
+    }
+
+    /**
      * @return string
      */
     public static function getDescription(): string
