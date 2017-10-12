@@ -78,6 +78,16 @@ class Time
     }
 
     /**
+     * @param \DateTime $dateTime
+     *
+     * @return Time
+     */
+    public static function dateTimeToTime(\DateTime $dateTime): Time
+    {
+        return self::strToTime($dateTime->format('H:i:s'));
+    }
+
+    /**
      * @param string $str
      *
      * @return Time

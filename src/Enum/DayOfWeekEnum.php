@@ -38,4 +38,16 @@ class DayOfWeekEnum extends AbstractEnum
             self::SUNDAY => 'Sunday',
         ];
     }
+
+    /**
+     * @param \DateTime $dateTime
+     *
+     * @return DayOfWeekEnum
+     */
+    public static function createByDateTime(\DateTime $dateTime): DayOfWeekEnum
+    {
+        $day = (int) $dateTime->format('w');
+
+        return new self(0 === $day ? self::SUNDAY : $day);
+    }
 }
