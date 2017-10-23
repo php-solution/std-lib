@@ -88,6 +88,14 @@ class Time
     }
 
     /**
+     * @return Time
+     */
+    public static function createNow(): Time
+    {
+        return self::dateTimeToTime(new \DateTime());
+    }
+
+        /**
      * @param string $str
      *
      * @return Time

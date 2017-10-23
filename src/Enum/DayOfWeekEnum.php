@@ -50,4 +50,12 @@ class DayOfWeekEnum extends AbstractEnum
 
         return new self(0 === $day ? self::SUNDAY : $day);
     }
+
+    /**
+     * @return DayOfWeekEnum
+     */
+    public static function createToday(): DayOfWeekEnum
+    {
+        return self::createByDateTime(new \DateTime());
+    }
 }
