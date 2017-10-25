@@ -1,4 +1,5 @@
 <?php
+
 namespace PhpSolution\StdLib\FrequentField\Traits;
 
 use PhpSolution\StdLib\FrequentField\Interfaces\EnabledInterface;

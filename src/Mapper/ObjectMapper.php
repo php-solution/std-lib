@@ -1,4 +1,5 @@
 <?php
+
 namespace PhpSolution\StdLib\Mapper;
 
 use PhpSolution\StdLib\Collection\GenericCollection;

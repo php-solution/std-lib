@@ -1,4 +1,5 @@
 <?php
+
 namespace PhpSolution\StdLib\DatePeriod;
 
 use PhpSolution\StdLib\Consequence\Change;

@@ -1,4 +1,5 @@
 <?php
+
 namespace PhpSolution\StdLib\Consequence;
 
 use PhpSolution\StdLib\Collection\AbstractGenericCollection;

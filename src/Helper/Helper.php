@@ -1,4 +1,5 @@
 <?php
+
 namespace PhpSolution\StdLib\Helper;
 
 /**
@@ -43,22 +44,6 @@ class Helper
     }
 
     /**
-     * @param array  $list
-     * @param string $field
-     *
-     * @return array
-     */
-    public static function extractByField(array $list, $field): array
-    {
-        $result = [];
-        foreach ($list as $row) {
-            $result[] = is_object($row) ? $row->{$field}() : $row[$field];
-        }
-
-        return $result;
-    }
-
-    /**
      * @param mixed $value
      *
      * @return string
@@ -66,5 +51,48 @@ class Helper
     public static function getType($value): string
     {
         return is_object($value) ? get_class($value) : gettype($value);
+    }
+
+    /**
+     * @param array  $list
+     * @param string $field
+     *
+     * @return array
+     */
+    public static function extractByField(array $list, string $field): array
+    {
+        $result = [];
+        foreach ($list as $item) {
+            $result[] = self::getItemValue($item, $field);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param array  $list
+     * @param string $field
+     *
+     * @return array
+     */
+    public static function indexListByField(array $list, string $field): array
+    {
+        $result = [];
+        foreach ($list as $item) {
+            $result[self::getItemValue($item, $field)] = $item;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param object|array $item
+     * @param string       $field
+     *
+     * @return mixed
+     */
+    private static function getItemValue($item, string $field)
+    {
+        return is_object($item) ? $item->{$field}() : $item[$field];
     }
 }
