@@ -95,4 +95,29 @@ class Helper
     {
         return is_object($item) ? $item->{$field}() : $item[$field];
     }
+
+    /**
+     * @param array $list
+     * @param int   $page
+     * @param int   $limit
+     *
+     * @return array
+     */
+    public static function paginateList(array $list, int $page, int $limit): array
+    {
+        $result = [];
+        $i = 0;
+        $offset = ($page - 1) * $limit;
+        foreach ($list as $item) {
+            if ($i++ < $offset) {
+                continue;
+            }
+            $result[] = $item;
+            if ($i >= $offset + $limit) {
+                break;
+            }
+        }
+
+        return $result;
+    }
 }
