@@ -1,16 +1,17 @@
 <?php
+
 namespace Tests\Collection;
 
 use PhpSolution\StdLib\Collection\GenericCollection;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @see \PhpSolution\StdLib\Collection\GenericCollection
+ * @see GenericCollection
  */
 class GenericCollectionTest extends TestCase
 {
     /**
-     * @see \PhpSolution\StdLib\Collection\GenericCollection
+     * @see GenericCollection
      */
     public function testPositive()
     {
@@ -22,7 +23,7 @@ class GenericCollectionTest extends TestCase
     }
 
     /**
-     * @see \PhpSolution\StdLib\Collection\GenericCollection
+     * @see GenericCollection
      */
     public function testNegative()
     {

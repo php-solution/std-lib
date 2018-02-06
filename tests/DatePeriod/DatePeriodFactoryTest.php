@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\DatePeriod;
 
 use PhpSolution\StdLib\DatePeriod\DatePeriod;
@@ -6,20 +7,19 @@ use PhpSolution\StdLib\DatePeriod\DatePeriodFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @see \PhpSolution\StdLib\DatePeriod\DatePeriodFactory
+ * @see DatePeriodFactory
  */
 class DatePeriodFactoryTest extends TestCase
 {
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\DatePeriodFactory::create()
+     * @see DatePeriodFactory::create()
+     *
+     * @dataProvider createDataProvider
      *
      * @param int      $year
      * @param int|null $month
      * @param int|null $day
-     *
      * @param DatePeriod $expectedResult
-     *
-     * @dataProvider createDataProvider
      */
     public function testCreate(int $year, int $month = null, int $day = null, DatePeriod $expectedResult)
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Mapper;
 
 use PhpSolution\StdLib\Mapper\ObjectMapper;

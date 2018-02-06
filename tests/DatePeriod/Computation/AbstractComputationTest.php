@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\DatePeriod\Computation;
 
 use PhpSolution\StdLib\DatePeriod\DatePeriod;
@@ -6,7 +7,7 @@ use PhpSolution\StdLib\DatePeriod\DatePeriodFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class AbstractComputationTest
+ * AbstractComputationTest
  */
 abstract class AbstractComputationTest extends TestCase
 {

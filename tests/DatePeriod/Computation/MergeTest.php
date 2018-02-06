@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\DatePeriod\Computation;
 
 use PhpSolution\StdLib\Consequence\Change;
@@ -8,7 +9,7 @@ use PhpSolution\StdLib\DatePeriod\Computation;
 use PhpSolution\StdLib\DatePeriod\DatePeriod;
 
 /**
- * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+ * @see Computation::merge()
  */
 class MergeTest extends AbstractComputationTest
 {
@@ -32,7 +33,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testNoIntersection()
     {
@@ -45,7 +46,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testLeftMerge()
     {
@@ -58,7 +59,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testRightMerge()
     {
@@ -71,7 +72,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testSameMerge()
     {
@@ -83,7 +84,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testInsideMerge()
     {
@@ -98,7 +99,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testOutsideMerge()
     {
@@ -113,7 +114,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testAInfinite()
     {
@@ -125,7 +126,7 @@ class MergeTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::merge()
+     * @see Computation::merge()
      */
     public function testBInfinite()
     {

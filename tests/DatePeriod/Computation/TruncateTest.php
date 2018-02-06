@@ -1,16 +1,17 @@
 <?php
+
 namespace Tests\DatePeriod\Computation;
 
 use PhpSolution\StdLib\DatePeriod\Computation;
 use PhpSolution\StdLib\DatePeriod\DatePeriod;
 
 /**
- * @see \PhpSolution\StdLib\DatePeriod\Computation::truncate()
+ * @see Computation::truncate()
  */
 class TruncateTest extends AbstractComputationTest
 {
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::truncate()
+     * @see Computation::truncate()
      */
     public function testNoTruncation()
     {
@@ -33,7 +34,7 @@ class TruncateTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::truncate()
+     * @see Computation::truncate()
      */
     public function testTruncate()
     {
@@ -48,7 +49,7 @@ class TruncateTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::truncate()
+     * @see Computation::truncate()
      */
     public function testTruncateInfinity()
     {

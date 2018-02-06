@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\DatePeriod\Computation;
 
 use PhpSolution\StdLib\Consequence\Change;
@@ -7,12 +8,12 @@ use PhpSolution\StdLib\Consequence\Destruction;
 use PhpSolution\StdLib\DatePeriod\Computation;
 
 /**
- * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+ * @see Computation::subtraction()
  */
 class SubtractionTest extends AbstractComputationTest
 {
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testDestruction()
     {
@@ -24,7 +25,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testLeftFirstDay()
     {
@@ -40,7 +41,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testLeftLastDay()
     {
@@ -56,7 +57,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testLeftLastAndFirstDay()
     {
@@ -76,7 +77,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testNoIntersection()
     {
@@ -87,7 +88,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testSubtractLastDay()
     {
@@ -102,7 +103,7 @@ class SubtractionTest extends AbstractComputationTest
     }
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::subtraction()
+     * @see Computation::subtraction()
      */
     public function testSubtractFirstDay()
     {

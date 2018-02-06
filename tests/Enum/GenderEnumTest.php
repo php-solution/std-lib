@@ -1,16 +1,17 @@
 <?php
+
 namespace Tests\Enum;
 
 use PhpSolution\StdLib\Enum\GenderEnum;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @see \PhpSolution\StdLib\Enum\GenderEnum
+ * @see GenderEnum
  */
 class GenderEnumTest extends TestCase
 {
     /**
-     * @see \PhpSolution\StdLib\Enum\GenderEnum
+     * @see GenderEnum
      */
     public function testPositive()
     {
@@ -20,7 +21,7 @@ class GenderEnumTest extends TestCase
     }
 
     /**
-     * @see \PhpSolution\StdLib\Enum\GenderEnum
+     * @see GenderEnum
      */
     public function testNegative()
     {

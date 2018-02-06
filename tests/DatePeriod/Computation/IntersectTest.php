@@ -1,11 +1,12 @@
 <?php
+
 namespace Tests\DatePeriod\Computation;
 
 use PhpSolution\StdLib\DatePeriod\Computation;
 use PhpSolution\StdLib\DatePeriod\DatePeriod;
 
 /**
- * @see \PhpSolution\StdLib\DatePeriod\Computation::isIntersect()
+ * @see Computation::isIntersect()
  */
 class IntersectTest extends AbstractComputationTest
 {
@@ -13,23 +14,25 @@ class IntersectTest extends AbstractComputationTest
      * @var DatePeriod;
      */
     private $april;
+
     /**
      * @var DatePeriod
      */
     private $startInfinity;
+
     /**
      * @var DatePeriod
      */
     private $endInfinity;
 
     /**
-     * @see \PhpSolution\StdLib\DatePeriod\Computation::isIntersect()
+     * @see Computation::isIntersect()
+     *
+     * @dataProvider intersectDataProvider
      *
      * @param DatePeriod $a
      * @param DatePeriod $b
      * @param bool       $expectedResult
-     *
-     * @dataProvider intersectDataProvider
      */
     public function testIntersect(DatePeriod $a, DatePeriod $b, bool $expectedResult)
     {
