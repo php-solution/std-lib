@@ -18,7 +18,7 @@ class DayOfWeekEnum extends AbstractEnum
     /**
      * @return int[]
      */
-    public function getAllowedValues()
+    public static function getAllowedValues()
     {
         return [self::MONDAY, self::TUESDAY, self::WEDNESDAY, self::THURSDAY, self::FRIDAY, self::SATURDAY, self::SUNDAY];
     }

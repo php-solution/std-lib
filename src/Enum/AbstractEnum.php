@@ -32,7 +32,7 @@ abstract class AbstractEnum
     /**
      * @return array
      */
-    abstract protected function getAllowedValues();
+    abstract protected static function getAllowedValues();
 
     /**
      * @param mixed $value
@@ -73,6 +73,14 @@ abstract class AbstractEnum
         }
 
         return 'Allowed values: ' . implode(', ', $descriptions);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getDescriptions(): array
+    {
+        return [];
     }
 
     /**

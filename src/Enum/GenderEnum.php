@@ -13,7 +13,7 @@ class GenderEnum extends AbstractEnum
     /**
      * @return int[]
      */
-    public function getAllowedValues()
+    public static function getAllowedValues()
     {
         return [self::MAN, self::WOMAN];
     }
