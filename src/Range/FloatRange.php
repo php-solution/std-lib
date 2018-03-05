@@ -64,6 +64,6 @@ class FloatRange implements RangeInterface, EmptyInterface
      */
     public function isEmpty(): bool
     {
-        return empty($this->from) && empty($this->to);
+        return null === $this->from && null === $this->to;
     }
 }
