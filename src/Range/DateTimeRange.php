@@ -24,6 +24,10 @@ class DateTimeRange implements RangeInterface, EmptyInterface
      */
     public function getFrom(): ?\DateTime
     {
+        if (\is_string($this->from)) {
+            return new \DateTime($this->from);
+        }
+
         return $this->from;
     }
 
@@ -44,6 +48,10 @@ class DateTimeRange implements RangeInterface, EmptyInterface
      */
     public function getTo(): ?\DateTime
     {
+        if (\is_string($this->to)) {
+            return new \DateTime($this->to);
+        }
+
         return $this->to;
     }
 
