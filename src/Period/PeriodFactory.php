@@ -1,20 +1,22 @@
 <?php
 
-namespace PhpSolution\StdLib\DatePeriod;
+namespace PhpSolution\StdLib\Period;
+
+use PhpSolution\StdLib\Range\DateTimeRange;
 
 /**
- * DatePeriodFactory gives ability to create DatePeriod in simple way
+ * PeriodFactory gives ability to create DatePeriod in simple way
  */
-class DatePeriodFactory
+class PeriodFactory
 {
     /**
      * @param int      $year
      * @param int|null $month
      * @param int|null $day
      *
-     * @return DatePeriod
+     * @return DateTimeRange
      */
-    public static function create(int $year, int $month = null, int $day = null): DatePeriod
+    public static function create(int $year, int $month = null, int $day = null): DateTimeRange
     {
         $start = (new \DateTime())
             ->setDate($year, $month ?: 1, $day ?: 1)
@@ -34,6 +36,6 @@ class DatePeriodFactory
         }
         $end->modify('-1 second');
 
-        return new DatePeriod($start, $end);
+        return new DateTimeRange($start, $end);
     }
 }

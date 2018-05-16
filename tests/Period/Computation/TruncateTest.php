@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\DatePeriod\Computation;
+namespace Tests\Period\Computation;
 
-use PhpSolution\StdLib\DatePeriod\Computation;
-use PhpSolution\StdLib\DatePeriod\DatePeriod;
+use PhpSolution\StdLib\Period\Computation;
+use PhpSolution\StdLib\Range\DateTimeRange;
 
 /**
  * @see Computation::truncate()
@@ -20,17 +20,17 @@ class TruncateTest extends AbstractComputationTest
         $to = $this->getAprilPeriod();
 
         $this->assertEquals(0, Computation::truncate($minuend, $to)->count());
-        $this->assertEquals($april->getDateStart(), $minuend->getDateStart());
-        $this->assertEquals($april->getDateEnd(), $minuend->getDateEnd());
+        $this->assertEquals($april->getFrom(), $minuend->getFrom());
+        $this->assertEquals($april->getTo(), $minuend->getTo());
 
         $minuend = $this->getAprilPeriod();
         $to = $this->getAprilPeriod();
-        $to->getDateStart()->modify('-1 day');
-        $to->getDateEnd()->modify('+1 day');
+        $to->getFrom()->modify('-1 day');
+        $to->getTo()->modify('+1 day');
 
         $this->assertEquals(0, Computation::truncate($minuend, $to)->count());
-        $this->assertEquals($april->getDateStart(), $minuend->getDateStart());
-        $this->assertEquals($april->getDateEnd(), $minuend->getDateEnd());
+        $this->assertEquals($april->getFrom(), $minuend->getFrom());
+        $this->assertEquals($april->getTo(), $minuend->getTo());
     }
 
     /**
@@ -40,12 +40,12 @@ class TruncateTest extends AbstractComputationTest
     {
         $minuend = $this->getAprilPeriod();
         $to = $this->getAprilPeriod();
-        $to->getDateStart()->modify('+1 day');
-        $to->getDateEnd()->modify('-1 day');
+        $to->getFrom()->modify('+1 day');
+        $to->getTo()->modify('-1 day');
 
         $this->assertEquals(1, Computation::truncate($minuend, $to)->count());
-        $this->assertEquals($to->getDateStart(), $minuend->getDateStart());
-        $this->assertEquals($to->getDateEnd(), $minuend->getDateEnd());
+        $this->assertEquals($to->getFrom(), $minuend->getFrom());
+        $this->assertEquals($to->getTo(), $minuend->getTo());
     }
 
     /**
@@ -53,11 +53,11 @@ class TruncateTest extends AbstractComputationTest
      */
     public function testTruncateInfinity()
     {
-        $minuend = new DatePeriod();
+        $minuend = new DateTimeRange();
         $to = $this->getAprilPeriod();
 
         $this->assertEquals(1, Computation::truncate($minuend, $to)->count());
-        $this->assertEquals($to->getDateStart(), $minuend->getDateStart());
-        $this->assertEquals($to->getDateEnd(), $minuend->getDateEnd());
+        $this->assertEquals($to->getFrom(), $minuend->getFrom());
+        $this->assertEquals($to->getTo(), $minuend->getTo());
     }
 }

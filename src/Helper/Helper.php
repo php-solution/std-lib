@@ -54,6 +54,9 @@ class Helper
     }
 
     /**
+     * @deprecated
+     * @see array_column()
+     *
      * @param array  $list
      * @param string $field
      *
@@ -70,6 +73,9 @@ class Helper
     }
 
     /**
+     * @deprecated
+     * @see \PhpSolution\StdLib\Arrays\Arrays::indexByField
+     *
      * @param array  $list
      * @param string $field
      *

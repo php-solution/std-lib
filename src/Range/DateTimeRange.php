@@ -2,12 +2,13 @@
 
 namespace PhpSolution\StdLib\Range;
 
+use PhpSolution\StdLib\Period\PeriodInterface;
 use PhpSolution\StdLib\Object\EmptyInterface;
 
 /**
  * DateTimeRange
  */
-class DateTimeRange implements RangeInterface, EmptyInterface
+class DateTimeRange implements PeriodInterface, EmptyInterface
 {
     /**
      * @var \DateTime|null
@@ -20,6 +21,16 @@ class DateTimeRange implements RangeInterface, EmptyInterface
     private $to;
 
     /**
+     * @param \DateTime|null $from
+     * @param \DateTime|null $to
+     */
+    public function __construct(\DateTime $from = null, \DateTime $to = null)
+    {
+        $this->from = $from;
+        $this->to = $to;
+    }
+
+    /**
      * @return \DateTime|null
      */
     public function getFrom(): ?\DateTime
@@ -30,7 +41,7 @@ class DateTimeRange implements RangeInterface, EmptyInterface
     /**
      * @param \DateTime|null $from
      *
-     * @return DateTimeRange
+     * @return self
      */
     public function setFrom(?\DateTime $from): self
     {
@@ -65,5 +76,18 @@ class DateTimeRange implements RangeInterface, EmptyInterface
     public function isEmpty(): bool
     {
         return null === $this->from && null === $this->to;
+    }
+
+    /**
+     * Clone DateTimeRange with internal objects
+     */
+    public function __clone()
+    {
+        if (null !== ($from = $this->getFrom())) {
+            $this->setFrom(clone $from);
+        }
+        if (null !== ($to = $this->getTo()) ) {
+            $this->setTo(clone $to);
+        }
     }
 }

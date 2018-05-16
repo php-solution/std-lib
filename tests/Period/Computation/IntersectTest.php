@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\DatePeriod\Computation;
+namespace Tests\Period\Computation;
 
-use PhpSolution\StdLib\DatePeriod\Computation;
-use PhpSolution\StdLib\DatePeriod\DatePeriod;
+use PhpSolution\StdLib\Period\Computation;
+use PhpSolution\StdLib\Range\DateTimeRange;
 
 /**
  * @see Computation::isIntersect()
@@ -11,17 +11,17 @@ use PhpSolution\StdLib\DatePeriod\DatePeriod;
 class IntersectTest extends AbstractComputationTest
 {
     /**
-     * @var DatePeriod;
+     * @var DateTimeRange;
      */
     private $april;
 
     /**
-     * @var DatePeriod
+     * @var DateTimeRange
      */
     private $startInfinity;
 
     /**
-     * @var DatePeriod
+     * @var DateTimeRange
      */
     private $endInfinity;
 
@@ -30,11 +30,11 @@ class IntersectTest extends AbstractComputationTest
      *
      * @dataProvider intersectDataProvider
      *
-     * @param DatePeriod $a
-     * @param DatePeriod $b
+     * @param DateTimeRange $a
+     * @param DateTimeRange $b
      * @param bool       $expectedResult
      */
-    public function testIntersect(DatePeriod $a, DatePeriod $b, bool $expectedResult)
+    public function testIntersect(DateTimeRange $a, DateTimeRange $b, bool $expectedResult)
     {
         $this->assertEquals($expectedResult, Computation::isIntersect($a, $b));
     }
@@ -45,8 +45,8 @@ class IntersectTest extends AbstractComputationTest
     public function intersectDataProvider()
     {
         $this->april = $this->getAprilPeriod();
-        $this->startInfinity = (new DatePeriod())->setDateStart(null)->setDateEnd((new \DateTime())->setTimestamp(rand(0, time())));
-        $this->endInfinity = (new DatePeriod())->setDateStart((new \DateTime())->setTimestamp(rand(0, time())))->setDateEnd(null);
+        $this->startInfinity = (new DateTimeRange())->setFrom(null)->setTo((new \DateTime())->setTimestamp(rand(0, time())));
+        $this->endInfinity = (new DateTimeRange())->setFrom((new \DateTime())->setTimestamp(rand(0, time())))->setTo(null);
 
         $tests = array_merge(
             $this->getBothInfinityTests(),
@@ -55,21 +55,21 @@ class IntersectTest extends AbstractComputationTest
             [
                 [
                     'a' => $this->april,
-                    'b' => (new DatePeriod())->setDateStart(new \DateTime('2000-03-07'))->setDateEnd(new \DateTime('2000-04-09')),
+                    'b' => (new DateTimeRange())->setFrom(new \DateTime('2000-03-07'))->setTo(new \DateTime('2000-04-09')),
                     'expectedResult' => true
                 ],
                 [
                     'a' => $this->april,
-                    'b' => (new DatePeriod())->setDateStart(new \DateTime('2000-03-07'))->setDateEnd(new \DateTime('2000-03-09')),
+                    'b' => (new DateTimeRange())->setFrom(new \DateTime('2000-03-07'))->setTo(new \DateTime('2000-03-09')),
                     'expectedResult' => false
                 ],
                 [
-                    'a' => (new DatePeriod())->setDateStart(new \DateTime('2000-03-07'))->setDateEnd(new \DateTime('2000-04-09')),
+                    'a' => (new DateTimeRange())->setFrom(new \DateTime('2000-03-07'))->setTo(new \DateTime('2000-04-09')),
                     'b' => $this->april,
                     'expectedResult' => true
                 ],
                 [
-                    'a' => (new DatePeriod())->setDateStart(new \DateTime('2000-03-07'))->setDateEnd(new \DateTime('2000-03-09')),
+                    'a' => (new DateTimeRange())->setFrom(new \DateTime('2000-03-07'))->setTo(new \DateTime('2000-03-09')),
                     'b' => $this->april,
                     'expectedResult' => false
                 ]
@@ -86,18 +86,18 @@ class IntersectTest extends AbstractComputationTest
     {
         return [
             [
-                'a' => new DatePeriod(),
-                'b' => new DatePeriod(),
+                'a' => new DateTimeRange(),
+                'b' => new DateTimeRange(),
                 'expectedResult' => true
             ],
             [
-                'a' => new DatePeriod(),
+                'a' => new DateTimeRange(),
                 'b' => $this->april,
                 'expectedResult' => true
             ],
             [
                 'a' => $this->april,
-                'b' => new DatePeriod(),
+                'b' => new DateTimeRange(),
                 'expectedResult' => true
             ],
             [
@@ -122,22 +122,22 @@ class IntersectTest extends AbstractComputationTest
     {
         $tests = [
             [
-                'a' => (clone $this->startInfinity)->setDateEnd(new \DateTime('2000-04-01')),
-                'b' => (clone $this->endInfinity)->setDateStart(new \DateTime('2000-03-01')),
+                'a' => (clone $this->startInfinity)->setTo(new \DateTime('2000-04-01')),
+                'b' => (clone $this->endInfinity)->setFrom(new \DateTime('2000-03-01')),
                 'expectedResult' => true
             ],
             [
-                'a' => (clone $this->startInfinity)->setDateEnd(new \DateTime('2000-04-01')),
-                'b' => (clone $this->endInfinity)->setDateStart(new \DateTime('2000-04-02')),
+                'a' => (clone $this->startInfinity)->setTo(new \DateTime('2000-04-01')),
+                'b' => (clone $this->endInfinity)->setFrom(new \DateTime('2000-04-02')),
                 'expectedResult' => false
             ],
             [
-                'a' => (clone $this->startInfinity)->setDateEnd(new \DateTime('2000-04-05')),
+                'a' => (clone $this->startInfinity)->setTo(new \DateTime('2000-04-05')),
                 'b' => $this->april,
                 'expectedResult' => true
             ],
             [
-                'a' => (clone $this->startInfinity)->setDateEnd(new \DateTime('2000-03-31')),
+                'a' => (clone $this->startInfinity)->setTo(new \DateTime('2000-03-31')),
                 'b' => $this->april,
                 'expectedResult' => false
             ],

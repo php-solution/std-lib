@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\DatePeriod\Computation;
+namespace Tests\Period\Computation;
 
 use PhpSolution\StdLib\Consequence\Change;
 use PhpSolution\StdLib\Consequence\ConsequenceCollection;
 use PhpSolution\StdLib\Consequence\Destruction;
-use PhpSolution\StdLib\DatePeriod\Computation;
-use PhpSolution\StdLib\DatePeriod\DatePeriod;
+use PhpSolution\StdLib\Period\Computation;
+use PhpSolution\StdLib\Range\DateTimeRange;
 
 /**
  * @see Computation::merge()
@@ -39,7 +39,7 @@ class MergeTest extends AbstractComputationTest
     {
         $april = $this->getAprilPeriod();
         $may = $this->getMayPeriod();
-        $may->getDateStart()->modify('+1 day');
+        $may->getFrom()->modify('+1 day');
 
         $this->assertEquals(0, Computation::merge($april, $may)->count());
         $this->assertEquals(0, Computation::merge($may, $april)->count());
@@ -54,8 +54,8 @@ class MergeTest extends AbstractComputationTest
         $may = $this->getMayPeriod();
 
         $this->assertMergedAndChanged(Computation::merge($april, $may));
-        $this->assertEquals($this->getAprilPeriod()->getDateStart(), $april->getDateStart());
-        $this->assertEquals($this->getMayPeriod()->getDateEnd(), $april->getDateEnd());
+        $this->assertEquals($this->getAprilPeriod()->getFrom(), $april->getFrom());
+        $this->assertEquals($this->getMayPeriod()->getTo(), $april->getTo());
     }
 
     /**
@@ -67,8 +67,8 @@ class MergeTest extends AbstractComputationTest
         $may = $this->getMayPeriod();
 
         $this->assertMergedAndChanged(Computation::merge($may, $april));
-        $this->assertEquals($this->getAprilPeriod()->getDateStart(), $may->getDateStart());
-        $this->assertEquals($this->getMayPeriod()->getDateEnd(), $may->getDateEnd());
+        $this->assertEquals($this->getAprilPeriod()->getFrom(), $may->getFrom());
+        $this->assertEquals($this->getMayPeriod()->getTo(), $may->getTo());
     }
 
     /**
@@ -79,8 +79,8 @@ class MergeTest extends AbstractComputationTest
         $april = $this->getAprilPeriod();
 
         $this->assertMergedNotChanged(Computation::merge($april, $this->getAprilPeriod()));
-        $this->assertEquals($this->getAprilPeriod()->getDateStart(), $april->getDateStart());
-        $this->assertEquals($this->getAprilPeriod()->getDateEnd(), $april->getDateEnd());
+        $this->assertEquals($this->getAprilPeriod()->getFrom(), $april->getFrom());
+        $this->assertEquals($this->getAprilPeriod()->getTo(), $april->getTo());
     }
 
     /**
@@ -90,12 +90,12 @@ class MergeTest extends AbstractComputationTest
     {
         $april = $this->getAprilPeriod();
         $inside = $this->getAprilPeriod();
-        $inside->getDateStart()->modify('+1 day');
-        $inside->getDateEnd()->modify('-1 day');
+        $inside->getFrom()->modify('+1 day');
+        $inside->getTo()->modify('-1 day');
 
         $this->assertMergedNotChanged(Computation::merge($april, $inside));
-        $this->assertEquals($this->getAprilPeriod()->getDateStart(), $april->getDateStart());
-        $this->assertEquals($this->getAprilPeriod()->getDateEnd(), $april->getDateEnd());
+        $this->assertEquals($this->getAprilPeriod()->getFrom(), $april->getFrom());
+        $this->assertEquals($this->getAprilPeriod()->getTo(), $april->getTo());
     }
 
     /**
@@ -105,12 +105,12 @@ class MergeTest extends AbstractComputationTest
     {
         $april = $this->getAprilPeriod();
         $outside = $this->getAprilPeriod();
-        $outside->getDateStart()->modify('-1 day');
-        $outside->getDateEnd()->modify('+1 day');
+        $outside->getFrom()->modify('-1 day');
+        $outside->getTo()->modify('+1 day');
 
         $this->assertMergedAndChanged(Computation::merge($april, $outside));
-        $this->assertEquals($outside->getDateStart(), $april->getDateStart());
-        $this->assertEquals($outside->getDateEnd(), $april->getDateEnd());
+        $this->assertEquals($outside->getFrom(), $april->getFrom());
+        $this->assertEquals($outside->getTo(), $april->getTo());
     }
 
     /**
@@ -118,11 +118,11 @@ class MergeTest extends AbstractComputationTest
      */
     public function testAInfinite()
     {
-        $a = new DatePeriod();
+        $a = new DateTimeRange();
         $b = $this->getAprilPeriod();
         $this->assertMergedNotChanged(Computation::merge($a, $b));
-        $this->assertEquals(null, $a->getDateStart());
-        $this->assertEquals(null, $a->getDateEnd());
+        $this->assertEquals(null, $a->getFrom());
+        $this->assertEquals(null, $a->getTo());
     }
 
     /**
@@ -131,9 +131,9 @@ class MergeTest extends AbstractComputationTest
     public function testBInfinite()
     {
         $a = $this->getAprilPeriod();
-        $b = new DatePeriod();
+        $b = new DateTimeRange();
         $this->assertMergedAndChanged(Computation::merge($a, $b));
-        $this->assertEquals(null, $a->getDateStart());
-        $this->assertEquals(null, $a->getDateEnd());
+        $this->assertEquals(null, $a->getFrom());
+        $this->assertEquals(null, $a->getTo());
     }
 }

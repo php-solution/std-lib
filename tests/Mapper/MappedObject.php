@@ -3,7 +3,7 @@
 namespace Tests\Mapper;
 
 use PhpSolution\StdLib\Collection\GenericCollection;
-use PhpSolution\StdLib\DatePeriod\DatePeriod;
+use PhpSolution\StdLib\Range\DateTimeRange;
 
 /**
  * MappedObject
@@ -51,7 +51,7 @@ class MappedObject
         $this->subObject1 = (object) ['a' => null, 'b' => null];
         $this->subObject2 = (object) ['a' => null, 'b' => null];
         $this->generic1 = new GenericCollection(\DateTime::class);
-        $this->generic2 = new GenericCollection(DatePeriod::class);
+        $this->generic2 = new GenericCollection(DateTimeRange::class);
     }
 
     /**
