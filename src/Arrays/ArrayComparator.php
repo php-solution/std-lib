@@ -138,12 +138,17 @@ class ArrayComparator
             return true;
         }
 
-        if (
-            !array_key_exists($key, $this->expected) ||
-            !is_array($this->expected[$key]) ||
-            !array_key_exists($key, $this->actual) ||
-            !is_array($this->actual[$key])
-        ) {
+        if (!array_key_exists($key, $this->expected) || !array_key_exists($key, $this->actual)) {
+            $this->result = false;
+
+            return true;
+        }
+
+        if (null === $this->expected[$key] && null === $this->actual[$key]) {
+            return true;
+        }
+
+        if (!is_array($this->expected[$key]) || !is_array($this->actual[$key])) {
             $this->result = false;
 
             return true;

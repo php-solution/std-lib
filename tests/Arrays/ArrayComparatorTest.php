@@ -77,27 +77,32 @@ final class ArrayComparatorTest extends TestCase
     public function compareArraysWithSubArraysDataProvider(): array
     {
         return [
-            'Unequal array' => [
+            'Unequal arrays' => [
                 'expected' => ['subArray' => ['a']],
                 'actual' => ['subArray' => ['b']],
                 'expectedResult' => false,
             ],
-            'Unequal array because of wrong data type' => [
+            'Unequal arrays because of wrong data type' => [
                 'expected' => ['subArray' => 'a'],
                 'actual' => ['subArray' => ['b']],
                 'expectedResult' => false,
             ],
-            'Equal array' => [
+            'Equal arrays' => [
                 'expected' => ['subArray' => ['a']],
                 'actual' => ['subArray' => ['a']],
                 'expectedResult' => true,
             ],
-            'Equal empty array' => [
+            'Equal empty arrays' => [
+                'expected' => ['subArray' => null],
+                'actual' => ['subArray' => null],
+                'expectedResult' => true,
+            ],
+            'Equal null arrays' => [
                 'expected' => [],
                 'actual' => [],
                 'expectedResult' => true,
             ],
-            'Equal shuffled array' => [
+            'Equal shuffled arrays' => [
                 'expected' => ['subArray' => ['a', 'b', 'c']],
                 'actual' => ['subArray' => ['c', 'b', 'a']],
                 'expectedResult' => true,
@@ -134,12 +139,12 @@ final class ArrayComparatorTest extends TestCase
     public function compareArraysWithSubAssocDataProvider(): array
     {
         return [
-            'Equal empty array' => [
+            'Equal empty arrays' => [
                 'expected' => [],
                 'actual' => [],
                 'expectedResult' => true,
             ],
-            'Equal complex array' => [
+            'Equal complex arrays' => [
                 'expected' => [
                     'a' => 'b',
                     'assoc' => [
@@ -164,7 +169,7 @@ final class ArrayComparatorTest extends TestCase
                 ],
                 'expectedResult' => true,
             ],
-            'Unequal complex array' => [
+            'Unequal complex arrays' => [
                 'expected' => [
                     'a' => 'b',
                     'assoc' => [
