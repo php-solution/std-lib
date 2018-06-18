@@ -83,6 +83,25 @@ class ArrayComparator
     }
 
     /**
+     * @return self
+     */
+    public function skipNulls(): self
+    {
+        foreach ($this->expected as $key => $value) {
+            if (null === $value) {
+                unset($this->expected[$key]);
+            }
+        }
+        foreach ($this->actual as $key => $value) {
+            if (null === $value) {
+                unset($this->actual[$key]);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @param string $key
      *
      * @return self

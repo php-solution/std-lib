@@ -24,6 +24,7 @@ final class ArrayComparatorTest extends TestCase
     {
         $result = (new ArrayComparator($expected, $actual))
             ->skip('1')
+            ->skipNulls()
             ->compare();
 
         $this->assertEquals($expectedResult, $result);
@@ -47,6 +48,11 @@ final class ArrayComparatorTest extends TestCase
             ],
             'Equal arrays with skip' => [
                 'expected' => ['a' => 'b', 1 => 'c'],
+                'actual' => ['a' => 'b'],
+                'expectedResult' => true,
+            ],
+            'Equal arrays with null' => [
+                'expected' => ['a' => 'b', 1 => 'c', 'd' => null],
                 'actual' => ['a' => 'b'],
                 'expectedResult' => true,
             ],
