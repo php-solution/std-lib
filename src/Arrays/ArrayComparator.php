@@ -72,6 +72,24 @@ class ArrayComparator
 
     /**
      * @param string $key
+     * @param int    $precision
+     *
+     * @return ArrayComparator
+     */
+    public function float(string $key, int $precision = 2): self
+    {
+        if (array_key_exists($key, $this->actual) && array_key_exists($key, $this->expected)) {
+            if (round($this->actual[$key], $precision) !== round($this->expected[$key], $precision)) {
+                $this->fail();
+            }
+            $this->skip($key);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
      *
      * @return self
      */
