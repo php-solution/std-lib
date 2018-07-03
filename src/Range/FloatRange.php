@@ -12,12 +12,12 @@ class FloatRange implements RangeInterface, EmptyInterface
     /**
      * @var float|null
      */
-    private $from;
+    protected $from;
 
     /**
      * @var float|null
      */
-    private $to;
+    protected $to;
 
     /**
      * @return float|null

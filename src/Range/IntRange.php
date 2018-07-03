@@ -12,12 +12,12 @@ class IntRange implements RangeInterface, EmptyInterface
     /**
      * @var int|null
      */
-    private $from;
+    protected $from;
 
     /**
      * @var int|null
      */
-    private $to;
+    protected $to;
 
     /**
      * @return int|null

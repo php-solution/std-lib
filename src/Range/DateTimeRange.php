@@ -13,12 +13,12 @@ class DateTimeRange implements PeriodInterface, EmptyInterface
     /**
      * @var \DateTime|null
      */
-    private $from;
+    protected $from;
 
     /**
      * @var \DateTime|null
      */
-    private $to;
+    protected $to;
 
     /**
      * @param \DateTime|null $from
