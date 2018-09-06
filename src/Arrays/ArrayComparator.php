@@ -79,7 +79,9 @@ class ArrayComparator
     public function float(string $key, int $precision = 2): self
     {
         if (array_key_exists($key, $this->actual) && array_key_exists($key, $this->expected)) {
-            if (round($this->actual[$key], $precision) !== round($this->expected[$key], $precision)) {
+            $actual = (int) ($this->actual[$key] * pow(10, $precision));
+            $expected = (int) ($this->expected[$key] * pow(10, $precision));
+            if ($actual !== $expected) {
                 $this->fail();
             }
             $this->skip($key);
