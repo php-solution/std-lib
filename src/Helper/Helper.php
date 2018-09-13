@@ -55,7 +55,7 @@ class Helper
 
     /**
      * @deprecated
-     * @see array_column()
+     * @see \PhpSolution\StdLib\Arrays\Arrays::extractByField
      *
      * @param array  $list
      * @param string $field
@@ -97,7 +97,7 @@ class Helper
      *
      * @return mixed
      */
-    private static function getItemValue($item, string $field)
+    public static function getItemValue($item, string $field)
     {
         return is_object($item) ? $item->{$field}() : $item[$field];
     }
