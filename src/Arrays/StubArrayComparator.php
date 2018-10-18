@@ -38,11 +38,27 @@ class StubArrayComparator
     }
 
     /**
+     * @return self
+     */
+    public function float(): self
+    {
+        return $this;
+    }
+
+    /**
      * @param string $key
      *
      * @return self
      */
     public function skip(string $key): self
+    {
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function skipNulls(): self
     {
         return $this;
     }
