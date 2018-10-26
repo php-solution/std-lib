@@ -78,8 +78,19 @@ class StubArrayComparator
      *
      * @return ArrayComparator|StubArrayComparator
      */
-    public function subAssoc(string $key): self
+    public function subObject(string $key): self
     {
         return new StubArrayComparator($this);
+    }
+
+    /**
+     * @param string        $key
+     * @param \Closure|null $comparisonFoo
+     *
+     * @return StubArrayComparator
+     */
+    public function subArrayOfObject(string $key, \Closure $comparisonFoo = null): self
+    {
+        return $this;
     }
 }

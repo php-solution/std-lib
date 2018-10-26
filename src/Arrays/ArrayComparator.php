@@ -147,15 +147,51 @@ class ArrayComparator
      *
      * @return self|StubArrayComparator
      */
-    public function subAssoc(string $key)
+    public function subObject(string $key)
     {
-        if ($this->checkSubArray($key)) {
+        if (!$this->result || $this->checkSubArray($key)) {
             return new StubArrayComparator($this);
         }
         $subComparator = new self($this->actual[$key], $this->expected[$key], $this);
         $this->skip($key);
 
         return $subComparator;
+    }
+
+    /**
+     * @param string        $key
+     * @param \Closure|null $comparisonFoo
+     *
+     * @return ArrayComparator
+     */
+    public function subArrayOfObject(string $key, \Closure $comparisonFoo = null): self
+    {
+        if (!$this->result || $this->checkSubArray($key)) {
+            return $this;
+        }
+        if (count($this->actual[$key]) !== count($this->expected[$key])) {
+            $this->fail();
+
+            return $this;
+        }
+
+        $comparisonFoo = null !== $comparisonFoo ? $comparisonFoo : function (array $actual, array $expected) {
+            return $actual == $expected;
+        };
+
+        foreach ($this->actual[$key] as $i => $item) {
+            if (array_key_exists($i, $this->expected[$key])) {
+                if ($comparisonFoo($this->actual[$key][$i], $this->expected[$key][$i])) {
+                    continue;
+                }
+            }
+
+            $this->fail();
+
+            return $this;
+        }
+
+        return $this;
     }
 
     /**

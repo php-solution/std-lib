@@ -27,7 +27,7 @@ final class ArrayComparatorTest extends TestCase
             ->skipNulls()
             ->compare();
 
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     /**
@@ -74,7 +74,7 @@ final class ArrayComparatorTest extends TestCase
             ->subArray('subArray')
             ->compare();
 
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     /**
@@ -119,30 +119,30 @@ final class ArrayComparatorTest extends TestCase
     /**
      * @see ArrayComparator
      *
-     * @dataProvider compareArraysWithSubAssocDataProvider
+     * @dataProvider compareArraysWithSubObjectDataProvider
      *
      * @param array $expected
      * @param array $actual
      * @param bool  $expectedResult
      */
-    public function testCompareArraysWithSubAssoc(array $expected, array $actual, bool $expectedResult): void
+    public function testCompareArraysWithSubObject(array $expected, array $actual, bool $expectedResult): void
     {
         $result = (new ArrayComparator($expected, $actual))
-            ->subAssoc('assoc')
+            ->subObject('object')
                 ->skip('skip')
                 ->subArray('array')
-                ->subAssoc('subAssoc')
+                ->subObject('subObject')
                     ->compare()
                 ->compare()
             ->compare();
 
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     /**
      * @return array
      */
-    public function compareArraysWithSubAssocDataProvider(): array
+    public function compareArraysWithSubObjectDataProvider(): array
     {
         return [
             'Equal empty arrays' => [
@@ -153,22 +153,22 @@ final class ArrayComparatorTest extends TestCase
             'Equal complex arrays' => [
                 'expected' => [
                     'a' => 'b',
-                    'assoc' => [
+                    'object' => [
                         1 => 2,
                         'skip' => 'c',
                         'array' => ['a', 'b', 'c'],
-                        'subAssoc' => [
+                        'subObject' => [
                             4 => 'a'
                         ]
                     ]
                 ],
                 'actual' => [
                     'a' => 'b',
-                    'assoc' => [
+                    'object' => [
                         1 => 2,
                         'skip' => 'd',
                         'array' => ['b', 'c', 'a'],
-                        'subAssoc' => [
+                        'subObject' => [
                             4 => 'a'
                         ]
                     ]
@@ -178,28 +178,85 @@ final class ArrayComparatorTest extends TestCase
             'Unequal complex arrays' => [
                 'expected' => [
                     'a' => 'b',
-                    'assoc' => [
+                    'object' => [
                         1 => 2,
                         'skip' => 'c',
                         'array' => ['a', 'b', 'c'],
-                        'subAssoc' => [
+                        'subObject' => [
                             4 => 'a'
                         ]
                     ]
                 ],
                 'actual' => [
                     'a' => 'b',
-                    'assoc' => [
+                    'object' => [
                         1 => 2,
                         'skip' => 'd',
                         'array' => ['b', 'c'],
-                        'subAssoc' => [
+                        'subObject' => [
                             4 => 'a'
                         ]
                     ]
                 ],
                 'expectedResult' => false,
             ]
+        ];
+    }
+
+    /**
+     * @see ArrayComparator
+     *
+     * @dataProvider compareArraysWithSubArrayOfObjectDataProvider
+     *
+     * @param array $expected
+     * @param array $actual
+     * @param bool  $expectedResult
+     */
+    public function testCompareArraysWithSubArrayOfObject(array $expected, array $actual, bool $expectedResult): void
+    {
+        $result = (new ArrayComparator($expected, $actual))
+            ->subArrayOfObject('array')
+            ->compare();
+
+        self::assertEquals($expectedResult, $result);
+    }
+
+    /**
+     * @return array
+     */
+    public function compareArraysWithSubArrayOfObjectDataProvider(): array
+    {
+        return [
+            'Equal arrays' => [
+                'expected' => [
+                    'array' => [
+                        ['a' => 'a', 'b' => 'b'],
+                        ['a' => 'b', 'b' => 'a'],
+                    ]
+                ],
+                'actual' => [
+                    'array' => [
+                        ['a' => 'a', 'b' => 'b'],
+                        ['a' => 'b', 'b' => 'a'],
+                    ]
+                ],
+                'expectedResult' => true,
+            ],
+            'Unequal arrays' => [
+                'expected' => [
+                    'array' => [
+                        ['a' => 'a', 'b' => 'b'],
+                        ['a' => 'b', 'b' => 'a'],
+                    ]
+                ],
+                'actual' => [
+                    'array' => [
+                        ['a' => 'a', 'b' => 'c'],
+                        ['a' => 'b', 'b' => 'a'],
+                    ]
+                ],
+                'expectedResult' => false,
+            ],
         ];
     }
 }
