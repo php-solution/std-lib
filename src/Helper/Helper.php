@@ -44,6 +44,27 @@ class Helper
     }
 
     /**
+     * @param string $string
+     * @param bool   $capitalizedLettersIsSameWord
+     * @param bool   $numbersIsSameWord
+     *
+     * @return string
+     */
+    public static function camelCaseToUnderscore(
+        string $string,
+        bool $capitalizedLettersIsSameWord = true,
+        bool $numbersIsSameWord = false
+    ): string {
+        $pattern = sprintf(
+            '/(?<!^)([A-Z]%s%s)/',
+            $capitalizedLettersIsSameWord ? '+' : '',
+            $numbersIsSameWord ? '' : '|[0-9]+'
+        );
+
+        return strtolower(preg_replace($pattern, '_$0', $string));
+    }
+
+    /**
      * @param mixed $value
      *
      * @return string
