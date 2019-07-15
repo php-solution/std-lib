@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace PhpSolution\StdLib\Exception;
 
 /**
- * NotFoundException
+ * AccessDeniedException
  */
-class NotFoundException extends \RuntimeException
+class AccessDeniedException extends \RuntimeException
 {
+
 }
